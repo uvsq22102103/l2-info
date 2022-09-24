@@ -26,10 +26,14 @@ for i in range(len(groupes)):
     dico2[i+1] = {"membres":groupes[i],"notes":[random.randint(0,20) for i in range(len(groupes[i]))]}
     dico2[i+1]["moyenne"] = round(sum(dico2[i+1]["notes"])/len(dico2[i+1]["notes"]),2)
 print(dico2)
+moyennes = []
 for i in dico2.keys():
     dico2[i]["mélange"] = dico2[i]["membres"] + dico2[i]["notes"] + [dico2[i]["moyenne"]]
     random.shuffle(dico2[i]["mélange"])
-
+    moyennes.append(dico2[i]["moyenne"])
 
 print(dico2)
-
+best_team = dico2[moyennes.index(max(moyennes))+1]
+worst_team = dico2[moyennes.index(min(moyennes))+1]
+print("Meilleur groupe :",best_team["membres"],"avec",best_team["moyenne"],"de moyenne")
+print("Pire groupe :",worst_team["membres"],"avec",worst_team["moyenne"],"de moyenne")
