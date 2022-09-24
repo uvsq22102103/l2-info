@@ -26,3 +26,10 @@ for i in range(len(groupes)):
     dico2[i+1] = {"membres":groupes[i],"notes":[random.randint(0,20) for i in range(len(groupes[i]))]}
     dico2[i+1]["moyenne"] = round(sum(dico2[i+1]["notes"])/len(dico2[i+1]["notes"]),2)
 print(dico2)
+for i in dico2.keys():
+    dico2[i]["mélange"] = dico2[i]["membres"] + dico2[i]["notes"] + [dico2[i]["moyenne"]]
+    random.shuffle(dico2[i]["mélange"])
+
+
+print(dico2)
+
