@@ -1,3 +1,4 @@
+import os
 
 
 def lecture_fichier(chemin):
@@ -65,8 +66,11 @@ def Rajout_Minorant(dico:dict):
     #fichier.close()
 
 
-def Suppression_fichier(chemin):
-    pass
+def Suppression_fichier(chemin:str):
+    if os.path.exists(chemin):
+        os.remove(chemin)
+    else:
+        print(chemin,"n'as pas été trouvé") 
 
 
 dico1 = lecture_fichier("notes.txt")
@@ -74,3 +78,4 @@ Rajout_Max(dico1)
 Rajout_Min(dico1)
 Rajout_Majorant(dico1)
 Rajout_Minorant(dico1)
+#Suppression_fichier("notes.txt")
