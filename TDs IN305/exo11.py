@@ -62,33 +62,56 @@ def tripermutation(tab):
     return(tab)
 
 
-def fusion(tab1,tab2):
-    res = []
-    i,j = 0,0
-    while i < len(tab1) and j < len(tab2):
-        if tab1[i] < tab2[j]:
-            res.append(tab1[i])
+def fusion(tab:list,p,q,r):
+    res = tab.copy()
+    i,k,j = p,p,q+1
+    while i <= q and j <= r:
+        if tab[i] < tab[j]:
+            res[k] = tab[i]
             i+=1
         else:
-            res.append(tab2[j])
+            res[k] = tab[j]
             j+=1
-    if i < j:
-        res += tab1[i:j]
-    else:
-        res += tab2[j:i]
-    return res
+        k+=1
+    while i <= q:
+        res[k] = tab[i]
+        i+=1
+        k+=1
+    while j <= r:
+        res[k] = tab[j]
+        j+=1
+        k+=1
+    tab[:] = res.copy()
 
 
-def trifusion(tab):
-    n = len(tab)//2
-    tab1, tab2 = tab[:n],tab[n:]
-    trifusion(tab1)
-    trifusion(tab2)
-    fusion(tab1,tab2)
+def trifusion(tab,p,r):
+    if p < r :
+        q = (p+r)//2
+        trifusion(tab,p,q)
+        trifusion(tab,q+1,r)
+        fusion(tab,p,q,r)
     return(tab)
 
 
-def trirapide(tab):
+def partitionner(tab,p,r):
+    i,j,pivot = p,r,tab[p]
+    while i < j:
+        while tab[i] < pivot:
+            i+=1
+        while tab[j] > pivot:
+            j-=1
+        if i < j:
+            tab[i],tab[j] = tab[j],tab[i]
+            i+=1
+            j-=1
+    return j
+
+
+def trirapide(tab,p,r):
+    if p < r:
+        q = partitionner(tab,p,r)
+        trirapide(tab,p,q)
+        trirapide(tab,q+1,r)
     return(tab)
 
 
@@ -98,5 +121,5 @@ est_trie(tab_test)
 est_trie(triinsertion(tab_test.copy()))
 est_trie(triinsertion_dicho(tab_test.copy()))
 est_trie(tripermutation(tab_test.copy()))
-est_trie(trifusion(tab_test.copy()))
-est_trie(trirapide(tab_test.copy()))
+est_trie(trifusion(tab_test.copy(),0,9))
+est_trie(trirapide(tab_test.copy(),0,9))
