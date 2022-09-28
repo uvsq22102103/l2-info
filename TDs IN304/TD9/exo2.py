@@ -17,7 +17,7 @@ class Dresseur:
             print(pokemon.nom+" fait déjà partie de votre équipe")
     
     def Afficher_dresseur(self):
-        print("\nLe dresseur "+self.nom+" à %d xp et %d niv\nPokémons"%(self.xp,self.niveau))
+        print("\n//Le dresseur "+self.nom+" à %d xp et %d niv//\n=========Pokémons========="%(self.xp,self.niveau))
         for pokemon in self.pokemons:
             pokemon.Afficher_pokemon()
     
@@ -54,17 +54,44 @@ class Dresseur:
         self.Afficher_dresseur()
         dresseur2.Afficher_dresseur()
         if score1 > score2:
-            print("\nLe dresseur "+self.nom+" à gagné Arène1 !")
+            print("\n! Le dresseur "+self.nom+" à gagné Arène1 !")
             return(self)
         elif score1 < score2:
-            print("\nLe dresseur "+dresseur2.nom+" à gagné Arène1 !")
+            print("\n! Le dresseur "+dresseur2.nom+" à gagné Arène1 !")
             return(dresseur2)
         else:
-            print("Egalité parfaite dans Arène1 !")
+            print("! Egalité parfaite dans Arène1 !")
+    
+    def Defi_deterministe(dresseur1,dresseur2):
+        l1 = [i.pv for i in dresseur1.pokemons]
+        pk1 = dresseur1.pokemons[l1.index(max(l1))]
+        l2 = [i.pv for i in dresseur2.pokemons]
+        pk2 = dresseur2.pokemons[l2.index(max(l2))]
+        if pk1.pv <= 0 or pk2.pv <= 0:
+            return(None)
+        gagnant = pk1.Scenario2(pk2)
+        if gagnant == pk1:
+            dresseur1.xp += 1
+            dresseur1.Update()
+            print("Le dresseur "+dresseur1.nom+" a gagné")
+            return(dresseur1)
+        elif gagnant == pk2:
+            dresseur2.xp += 1
+            dresseur2.Update()
+            print("Le dresseur "+dresseur2.nom+" a gagné")
+            return(dresseur2)
+    
+    def Arene2(dresseur1,dresseur2):
+        dresseur1.Taverne()
+        dresseur2.Taverne()
+        for i in range(100):
+            combat = Dresseur.Defi_deterministe(dresseur1,dresseur2)
+            if combat == None:
+                break
 
 
 #Génération des pokémons#####
-p1 = Pokemon("Ponita",50)
+p1 = Pokemon("Ponita",41)
 p2 = Pokemon("Roucoul",32)
 p3 = Pokemon("Nosferapti",40)
 #Attaque de base############################
@@ -88,4 +115,5 @@ d2.Ajout_pokemon(p3)
 d1.Afficher_dresseur()
 d2.Afficher_dresseur()
 #Combats###############
-d1.Arene1(d2)
+#d1.Arene1(d2)
+Dresseur.Arene2(d1,d2)

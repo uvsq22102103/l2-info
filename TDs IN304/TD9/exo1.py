@@ -86,7 +86,7 @@ class Attaque:
         self.usages_max = usages_max
     
     def Afficher_attaque(self):
-        print(self.nom,"; %d Dégats;"%self.degats,"%d/%d Usage max."%(self.usages,self.usages_max))
+        print("   >"+self.nom,"; %d Dégats;"%self.degats,"%d/%d Usage max."%(self.usages,self.usages_max))
 
 
 #pk1.Scenario1(pk2)
