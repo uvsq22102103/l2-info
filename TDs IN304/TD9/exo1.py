@@ -46,6 +46,8 @@ class Pokemon:
     
     def Soigner_pokemon(self):
         self.pv = self.pv_max
+        for attaque in self.attaques:
+            attaque.usages = 0
     
     def Scenario1(self,cible):
         self.Attaque(cible)
@@ -69,8 +71,10 @@ class Pokemon:
         cible.Afficher_pokemon()
         if self.pv <= 0:
             print(cible.nom+" à gagné le combat pokemon")
+            return(cible)
         else:
             print(self.nom+" à gagné le combat pokemon")
+            return(self)
 
 
 
