@@ -1,19 +1,5 @@
 import random
 
-
-def scenario1(p1,p2):
-    p1.Attaque(p2)
-    p1.Attaque(p2)
-    p1.Afficher_pokemon()
-    p2.Afficher_pokemon()
-    if p2.pv > 0:
-        p2.Attaque(p1)
-        p2.Attaque(p1)
-        p2.Attaque(p1)
-        p1.Afficher_pokemon()
-        p2.Afficher_pokemon()
-
-
 def scenario2(p1,p2):
     while p1.pv > 0 and p2.pv > 0:
         p1.Attaque(p2)
@@ -34,6 +20,7 @@ class Pokemon:
         self.nom = nom
         self.pv = pv
         self.attaques = []
+        self.pv_max = pv
         Pokemon.compteur += 1
     
     def ajouter_attaque(self,attaque):
@@ -46,7 +33,7 @@ class Pokemon:
             attaque.usages = 0
     
     def Afficher_pokemon(self):
-        print(self.nom+" : %d pv"%self.pv)
+        print(self.nom+" : %d/%d pv"%(self.pv,self.pv_max))
         for i in self.attaques:
             i.Afficher_attaque()
     
@@ -56,26 +43,51 @@ class Pokemon:
         if attaque.usages_max > attaque.usages:
             attaque.usages += 1
             cible.pv -= attaque.degats
+    
+    def Soigner_pokemon(self):
+        self.pv = self.pv_max
+        for attaque in self.attaques:
+            attaque.usages = 0
+    
+    def Scenario1(self,cible):
+        self.Attaque(cible)
+        self.Attaque(cible)
+        self.Afficher_pokemon()
+        cible.Afficher_pokemon()
+        if cible.pv > 0:
+            cible.Attaque(self)
+            cible.Attaque(self)
+            cible.Attaque(self)
+            self.Afficher_pokemon()
+            cible.Afficher_pokemon()
+    
+    def Scenario2(self,cible):
+        while self.pv > 0 and cible.pv > 0:
+            self.Attaque(cible)
+            if cible.pv <= 0:
+                break
+            cible.Attaque(self)
+        self.Afficher_pokemon()
+        cible.Afficher_pokemon()
+        if self.pv <= 0:
+            print(cible.nom+" à gagné le combat pokemon")
+            return(cible)
+        else:
+            print(self.nom+" à gagné le combat pokemon")
+            return(self)
+
 
 
 class Attaque:
-    def __init__(self,nom,degats,usages,usages_max):
+    def __init__(self,nom,degats,usages_max):
         self.nom = nom
         self.degats = degats
-        self.usages = usages
+        self.usages = 0
         self.usages_max = usages_max
     
     def Afficher_attaque(self):
         print(self.nom,"; %d Dégats;"%self.degats,"%d/%d Usage max."%(self.usages,self.usages_max))
 
 
-pk1 = Pokemon("Harbok",35)
-pk1.ajouter_attaque(Attaque("Charge",3,0,40))
-pk1.ajouter_attaque(Attaque("Venin",7,0,20))
-pk2 = Pokemon("Pikachu",32)
-pk2.ajouter_attaque(Attaque("Vive attaque",4,0,10))
-pk2.ajouter_attaque(Attaque("Eclair",10,0,10))
-print("Il y a %d pokemons dans ce Monde"%Pokemon.compteur)
-
-#scenario1(pk1,pk2)
-#scenario2(pk1,pk2)
+#pk1.Scenario1(pk2)
+#pk1.Scenario2(pk2)
