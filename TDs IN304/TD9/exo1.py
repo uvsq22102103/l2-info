@@ -75,10 +75,10 @@ class Pokemon:
 
 
 class Attaque:
-    def __init__(self,nom,degats,usages,usages_max):
+    def __init__(self,nom,degats,usages_max):
         self.nom = nom
         self.degats = degats
-        self.usages = usages
+        self.usages = 0
         self.usages_max = usages_max
     
     def Afficher_attaque(self):
