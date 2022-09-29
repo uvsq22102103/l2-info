@@ -26,3 +26,5 @@ class CD(Titre,Annee):
         self.__nbreTitres = nbreTitres
         Titre.__init__(self,titre)
         Annee.__init__(self,annee)
+
+cd1 = CD("Feu de bois",2020,"Damso",11)
