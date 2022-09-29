@@ -26,3 +26,8 @@ class CD(Titre,Annee):
         self.__nbreTitres = nbreTitres
         Titre.__init__(self,titre)
         Annee.__init__(self,annee)
+    
+    def Afficher(self):
+        print(self.__nomArtiste+str(self.__nbreTitres))
+        super().Afficher()
+
