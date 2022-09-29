@@ -31,3 +31,5 @@ class CD(Titre,Annee):
         print(self.__nomArtiste+str(self.__nbreTitres))
         super().Afficher()
 
+
+cd1 = CD("Feu de bois",2020,"Damso",11)
