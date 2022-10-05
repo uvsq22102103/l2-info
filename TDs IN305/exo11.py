@@ -1,4 +1,20 @@
 import random, time
+import matplotlib.pyplot as plt
+
+
+def duree(tab,algo):
+    debut = time.time()
+    if algo == 1:
+        triinsertion(tab)
+    elif algo == 2:
+        triinsertion_dicho(tab)
+    elif algo == 3:
+        tripermutation(tab)
+    elif algo == 4:
+        est_trie(trifusion(tab,0,len(tab)-1))
+    else:
+        est_trie(trirapide(tab,0,len(tab)-1))
+    return(time.time()-debut)
 
 
 def recherche_pos(tab,elem,fin):
@@ -26,9 +42,9 @@ def est_trie(tab):
         else:
             tri = True
     if tri:
-        print("tableau trié : ",tab)
+        print("tableau trié")
     else:
-        print("tableau pas trié : ",tab)
+        print("tableau pas trié")
 
 
 def recherche_pos_dicho(tab,elem,fin):
@@ -94,7 +110,7 @@ def trifusion(tab,p,r):
 
 
 def partitionner(tab,p,r):
-    i,j,pivot = p,r,tab[p]
+    i,j,pivot = p+1,r,tab[p]
     while i < j:
         while tab[i] < pivot:
             i+=1
@@ -104,22 +120,35 @@ def partitionner(tab,p,r):
             tab[i],tab[j] = tab[j],tab[i]
             i+=1
             j-=1
+    tab[p],tab[j] = tab[j],tab[p]
     return j
 
 
 def trirapide(tab,p,r):
     if p < r:
         q = partitionner(tab,p,r)
-        trirapide(tab,p,q)
+        trirapide(tab,p,q-1)
         trirapide(tab,q+1,r)
     return(tab)
 
 
-# initialisation d’un tableau de taille 10 avec des valeurs aléatoires pour vérifier la validité des algos de tris
-tab_test=[random.randint(0,20)for i in range(10)]
-est_trie(tab_test)
-est_trie(triinsertion(tab_test.copy()))
-est_trie(triinsertion_dicho(tab_test.copy()))
-est_trie(tripermutation(tab_test.copy()))
-est_trie(trifusion(tab_test.copy(),0,9))
-est_trie(trirapide(tab_test.copy(),0,9))
+print(duree([random.randint(0,20)for j in range(10000)],5))
+
+
+x = []
+duree4 = []
+duree5 = []
+for i in range(1000,10000,1000) :
+    tab_test=[random.randint(0,20)for j in range(i)]
+    x.append(i)
+    #duree4.append(duree(tab_test.copy(),4))
+    duree5.append(duree(tab_test.copy(),5))
+
+fig = plt.figure()
+ax = plt.axes()
+plt.plot(x,duree4,"g-",label="Tri Fusion")
+plt.plot(x,duree5,"b-",label="Tri Rapide")
+plt.legend(loc="upper left")
+plt.xlabel("Taille x tableau")
+plt.ylabel("Temps d'éxécution")
+#plt.show()
