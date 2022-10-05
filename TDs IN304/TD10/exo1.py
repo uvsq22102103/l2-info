@@ -1,3 +1,4 @@
+
 class Titre:
     def __init__(self,titre:str):
         self.__titre = titre
@@ -40,6 +41,9 @@ class DVD(Titre,Annee):
     def Afficher(self):
         print("DVD :",Titre.getTitre(self),self.__real,Annee.getAnnee(self))
 
+    def getReal(self):
+        return(self.__real)
+
 
 class Collection():
     def __init__(self):
@@ -57,9 +61,28 @@ class Collection():
         print(">Fin collection")
     
     def Rechercher_titre(self,titre:str):
-        for obj in self.collection:
-            if obj.Titre.getTitre() == titre:
-                pass
+        print("Recherche par titre : ")
+        titres = [i.getTitre() for i in self.collection]
+        try :
+            self.collection[titres.index(titre)].Afficher()
+        except ValueError:
+            print("Le titre '"+titre+"' n'est pas dans la collection")
+
+    def Rechercher_annee(self,annee:int):
+        print("Recherche pour %d:"%annee)
+        annees = [i.getAnnee() for i in self.collection]
+        for i in range(len(annees)):
+            if annees[i] == annee:
+                self.collection[i].Afficher()
+        print("Fin recherche")
+    
+    def Recherche_real_annee(self,real:str,annee:int):
+        print("Recherche "+real+"/%d :"%annee)
+        for i in self.collection:
+            if isinstance(i, DVD):
+                if i.getAnnee() == annee and i.getReal() == real:
+                    i.Afficher()
+        print("Fin recherche")
 
 
 cd1 = CD("Feu de bois",2020,"Damso",11)
@@ -70,3 +93,8 @@ Armoire = Collection()
 Armoire.Ajout(cd1)
 Armoire.Ajout(dvd1)
 Armoire.Afficher()
+Armoire.Rechercher_titre(cd1.getTitre())
+Armoire.Rechercher_titre("Adieu bientôt")
+Armoire.Rechercher_annee(2020)
+Armoire.Rechercher_annee(2012)
+Armoire.Recherche_real_annee("Patrick MURET",2012)
