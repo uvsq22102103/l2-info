@@ -55,9 +55,21 @@ def denombrement(tab):
         output[i] += 1
     return output
 
+def tri_comptage(tab):
+    tabComptage = denombrement(tab)
+    # Création du tableau trié    
+    tab=[] 
+    N = len(tabComptage)
+    for i in range(N):
+        for j in range(tabComptage[i]):
+            tab.append(i)
+    return tab
+
 
 l = [6,1,4,2,1,1,0,1,3,6,4]
+l1 = [23, 34, 56, 6, 7, 3, 4, 36, 9, 2]
 #print("\nTri selection Récursif simple:",tri_selection_Rs(l.copy()))
 #print("Tri selection Itératif simple:",tri_selection_Is(l.copy()))
 #print("Tri selection Itératif MinMax:",tri_selection_I(l.copy()))
-print(denombrement(l.copy()))
+print(denombrement(l1.copy()))
+print(tri_comptage(l1.copy()))
