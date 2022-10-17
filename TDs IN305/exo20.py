@@ -9,6 +9,10 @@ def somme_entiers(n):
         return 0
     return somme_entiers(n-1)+n
 
+def est_palindrome(mot):
+    if len(mot) < 1:
+        return True
+    
 
 print(carré(6))
 print(somme_entiers(3))
