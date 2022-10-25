@@ -28,7 +28,7 @@ def diviseur_commun(a,b,nb=2,dc=[]):
             dc.append(nb)
         diviseur_commun(a,b,nb+1,dc)
     else:
-        print("PGDC de %d et %d est %d" %(a,b,dc[-1]))
+        print("Plus Grand Diviseur Commun de %d et %d est %d" %(a,b,dc[-1]))
         return(dc[-1])
 
 
