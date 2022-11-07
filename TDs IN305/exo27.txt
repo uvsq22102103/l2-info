@@ -1,0 +1,72 @@
+#
+Hauteur
+Entrée : noeud "a"
+Sortie : entier hauteur de "a"
+
+Hauteur(a):
+    Si est_vide(a):
+        return -1
+    Sinon:
+        g = sous arbre gauche de "a"
+        d = sous arbre droit de "a"
+        return max(Hauteur(d) + Hauteur(g)) + 1
+##
+#
+NombreNoeuds
+Entrée :  noeud "a"
+Sortie : nombre de noeuds dans "a"
+
+NombreNoeuds(a):
+    Si est_vide(a):
+        return 0
+    Sinon:
+        g = sous arbre gauche de "a"
+        d = sous arbre droit de "a"
+        return NombreNoeuds(g) + NombreNoeuds(d) + 1
+##
+#
+Descendants
+Entrée :  noeud "a"
+Sortie : None
+Effet : Calcul et stocke en chaque noeuds de l'arbre le nombre de ses descendants
+
+Descendants(a):
+    g = sous arbre gauche de "a"
+    d = sous arbre droit de "a"
+
+    Descendants(g)
+    Descendants(d)
+        
+    nb_enfants = 0
+    Si not est_vide(g):
+        nb_enfants += 1
+    Si not est_vide(d):
+        nb_enfants += 1
+        
+    a.set_value(g.get_value() + d.get_value() + nb_enfants)
+##
+#
+Un fils
+Entrée :  noeud "a" et nb:integer = 0 pour la 1ère exécution
+Sortie : Calcul le nb de sommets ayants un fils
+
+Un_Fils(a,nb=0):
+    g = sous arbre gauche de "a"
+    d = sous arbre droit de "a"
+
+    Si (est_vide(g) and not est_vide(d)) or (not est_vide(g) and est_vide(d)):
+        nb += 1
+    
+    return Un_Fils(g) + Un_Fils(d) + nb
+##
+#
+Complet
+Entrée : noeud "a"
+Sortie : Vrai si arbre complet sinon False
+
+Complet(a):
+    Si (2**(Hauteur(a)+1))-1 = NombreNoeuds(a):
+        return True
+    Sinon:
+        return False
+##
