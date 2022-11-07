@@ -77,5 +77,5 @@ pk2.ajouter_attaque(Attaque("Vive attaque",4,0,10))
 pk2.ajouter_attaque(Attaque("Eclair",10,0,10))
 print("Il y a %d pokemons dans ce Monde"%Pokemon.compteur)
 
-#scenario1(pk1,pk2)
-#scenario2(pk1,pk2)
+scenario1(pk1,pk2)
+scenario2(pk1,pk2)

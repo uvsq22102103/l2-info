@@ -37,7 +37,7 @@ def valeur():
     print(total)
 
 
-for i in range(1):
+for i in range(10):
     achat(1)
 
 for i in range(30):
