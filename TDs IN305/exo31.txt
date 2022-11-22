@@ -1,0 +1,35 @@
+1) Inclus(A,B : ABR): Bool
+Début:
+    retourner est_vide(A) or (recherche(B,A.valeur) and Inclus(A.gauche,B) and Inclus(A.droite,B))
+Fin
+Complexité : O(n1b2+n2b1)
+
+2) Contenu (A,B: ABR): Bool
+Début:
+    retourner Inclus(A,B) and Inclus(B,A)
+Fin
+ou
+Début:
+    l_A = liste_parcour_infixe(A)
+    L_B = liste_parcour_infixe(B)
+    cas simple:
+        pour i allant de 1 à N:
+            si l_A != L_B retourner Faux
+        retourner Vrai
+
+3) Domaine (A,B : ABR): Bool
+
+MinABR(A:ABR): float
+    x = A.racine()
+    tant que not est_vide(x.gauche):
+        x = x.gauche()
+    retourner x.valeur
+MaxABR(A:ABR): float
+    x = A.racine()
+    tant que not est_vide(x.droite):
+        x = x.droite()
+    retourner x.valeur
+
+Début:
+    retourner (est_vide(A) or est_vide(B)) or (MinABR(A) >= MinABR(B) and MaxABR(A) <= MaxABR(B))
+Complexité : O(h1+hb)

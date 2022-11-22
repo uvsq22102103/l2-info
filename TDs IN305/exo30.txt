@@ -1,0 +1,22 @@
+3)
+max
+Entrée : Arbre "a"
+Sortie : "v" entier max des valeurs de "a"
+max(a):
+    Si est_vide(a.droite):
+        retourner a.valeur
+retourner max(a.droite)
+
+min
+Entrée : Arbre "a"
+Sortie : "v" entier min des valeurs de "a"
+min(a):
+    Si est_vide(a.gauche):
+        retourner a.valeur
+retourner min(a.gauche)
+
+ABR
+Entrée : Arbre "a"
+Sortie : booléen
+isABR(a):
+    retourner est_vide(a) or (isABR(a.gauche) and isABR(a.droite) and est_vide(a.gauche) or a.valeur > max(a.gauche)) and (est_vide(a.droite) or a.valeur < min(a.droite))
