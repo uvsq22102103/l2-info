@@ -47,3 +47,43 @@ Les prédicats :
 && = Et 
 || = Ou
 !(p) est la négation du prédicat p.
+
+à la place de faire plein de elif il existe la fonctionnalité switch
+
+switch (variable)
+{
+    case 1:
+    ...code...
+    break;
+    case n:
+    .......
+}
+
+condition classique vs condition ternaire:
+
+if (majeur)
+  age = 18;
+else
+  age = 17;
+
+c'est la même chose que : age = (majeur) ? 18 : 17;
+Ce genre de condition ne marche donc que pour le changement de une variable, elle n'opère rien de plus.
+
+Le while en C:
+
+while (condition)
+{
+    ...code...
+}
+
+La boucle For en C:
+
+int compteur;
+
+for (compteur = 0 ; compteur < 10 ; compteur++)
+{
+    ...code...
+}
+
+Les fonctions en C:
+
