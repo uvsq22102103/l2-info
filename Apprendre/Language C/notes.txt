@@ -1,0 +1,49 @@
+pour compiler un code C il faut utiliser:
+~$ gcc file.c  <=== (sous linux)
+
+Definition de variable entière signée:
+
+signed char ==> [-127; 127]
+int ==> [-32 767 ;32 767]
+long ==> [-2 147 483 647; 2 147 483 647]
+
+Définition de variable entière non signée:
+
+unsigned char ==> [0 ; 255]
+unsigned int ==> [0 ; 65 535]
+unsigned long ==> [0 ; 4 294 967 295]
+
+Définition de variable flottante:
+
+float ==> [-1 x1037; 1 x1037]
+double ==> [-1 x1037 ;1 x1037]
+
+Pour préciser une constante il faut écrire const avant la définition de variable.
+
+Afficher dans printf() une variable:
+
+"%d" ==> int
+"%u" ==> unsigned int
+"%ld" ==> long
+"%f" ==> float
+"%f" ==> double
+
+Pour faire un input utilisateur on écrit scanf("type de la donnée(cf au dessus)", &variable);
+
+Incrémentation :
+
+var = var + x 
+var++ correspond à var = var + 1
+penser à la mise en forme python.
+
+Importations : 
+
+#include <something> est une directive de préprocesseur.
+Cela permet d'ajouter plus de fonctionnalités au code éxécuté
+Par exemple :
+<math.h> contient de nbreuses fonctions mathématiques toutes prêtes.
+
+Les prédicats :
+&& = Et 
+|| = Ou
+!(p) est la négation du prédicat p.
