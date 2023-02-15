@@ -1,0 +1,9 @@
+<<< 14 février : On commence le projet Huffman avec Cyriac >>>
+
+- Création de l'arborescence de fichiers qui servira au main.py
+- Création d'une fonction qui calcule les proportion de x charactères dans le texte
+    et qui sort une liste de tuples dans l'ordre croissant d'apparition des lettres.
+- Mise en place d'un GUI par Cyriac hors projet principal qui pourrait fournir les fonctionnalités
+    dont nous avons besoin.
+
+<<< 15 février : Réflexion sur les structures de données a utiliser >>>

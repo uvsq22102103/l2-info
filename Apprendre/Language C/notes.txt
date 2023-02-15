@@ -87,3 +87,24 @@ for (compteur = 0 ; compteur < 10 ; compteur++)
 
 Les fonctions en C:
 
+type nomFonction(parametres)
+{
+    // Insérez vos instructions ici
+}
+
+Où type est la variable retournée et parametres correspond aux arguments.
+
+Annoncer une fonction se fait toujours avant le main d'habitude, hors en C il est possible de faire ce que l'on appel un prototype :
+exemple:
+
+long maFonction(parametres);
+
+int main()
+{
+  *code*
+}
+
+long maFonction(parametres)
+{
+  *code*
+}

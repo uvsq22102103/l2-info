@@ -7,3 +7,4 @@ for i in range(len(liste_parfums)):
 print("\n")
 for i,j in enumerate(liste_parfums, valeur):
     print(f"la {j} est en position {i}.")
+

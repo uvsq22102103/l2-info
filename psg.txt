@@ -1,7 +1,0 @@
-nom goudout 
-prenom aymeric 
-adresse toulouselautrec 
-codepostal 78280 
-numtel 0760720981 
-anniv 08072003
-genre masculin
