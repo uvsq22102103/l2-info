@@ -7,3 +7,10 @@
     dont nous avons besoin.
 
 <<< 15 février : Réflexion sur les structures de données a utiliser >>>
+
+- J'ai réussi a developper l'algorithme qui construit un arbre en respectant la consigne,
+- Création d'une méthode .show() permettant d'afficher le contenu d'un arbre (trop fier),
+
+To do list :
+    - Méthode find dans la classe ArbreB pour donner un chemin binaire.
+    - ..?

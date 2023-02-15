@@ -6,3 +6,6 @@ class Sommet():
 
     def set_etiquette(self, new_etiquette):
         self.etiquette = new_etiquette
+    
+    def is_leaf(self):
+        return self.value != None

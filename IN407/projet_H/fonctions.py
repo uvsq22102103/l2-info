@@ -5,7 +5,7 @@ def proportions(path:str):
     str => list(n*tuple(chr,occurences))"""
     
     with open(path,"r") as f:
-        texte = "".join(f.readlines())
+        texte = "".join(f.readlines()).lower()
 
     proportion = {}
 
