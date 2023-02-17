@@ -14,3 +14,4 @@
 To do list :
     - Méthode find dans la classe ArbreB pour donner un chemin binaire.
     - ..?
+    - https://stackoverflow.com/questions/44798635/how-can-i-set-the-same-type-as-class-in-methods-parameter-following-pep484
