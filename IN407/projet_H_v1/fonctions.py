@@ -4,7 +4,7 @@ from classes import ArbreB, Sommet
 def proportions(path:str):
     """Prend le chemin d'un fichier quelconque et retourne les
     occurences par Charactères (= chr) de son content.\n
-    str => (list(n*tuple(chr,occurences)), list[chr])"""
+    str => list(n*tuple(chr,occurences))"""
     
     with open(path,"r") as f:
         texte = "".join(f.readlines()).lower()
@@ -17,7 +17,12 @@ def proportions(path:str):
         else:
             proportion[i] = 1
 
-    return (sorted(proportion.items(), key= lambda item: item[1]), list(proportion.keys()))
+    len_texte = len(texte)
+
+    for i in proportion.keys():
+        proportion[i] = round((proportion[i]/len_texte)*100,2)
+
+    return sorted(proportion.items(), key= lambda item: item[1])
 
 
 def _staged_merger(liste_abr:list[ArbreB]):
