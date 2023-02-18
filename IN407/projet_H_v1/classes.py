@@ -38,25 +38,24 @@ class ArbreB():
     
     def search(self,elem:str):
         """Recherche un element ds un arbre en renvoi son chemin"""
-        if type(self) == ArbreB:
-            ArbreB.search(self.content,elem)
+        if type(self) == ArbreB: # 
+            return ArbreB.search(self.content,elem)
         elif type(self) == dict:
             if self["r"].value == None: # if Sommet non feuille alors continuer
                 g = ArbreB.search(self["fg"], elem)
                 d = ArbreB.search(self["fd"], elem)
-                print(g,d)
-                if type(g) == bool or type(d) == bool: # dans feuille
-                    if g: # si element dans la feuille gauche
-                        return "0"
-                    elif d: # si element dans la feuille droite
-                        return "1"
-                if type(g) == str: # si element déjà trouvé à gauche
+                if g == True:
+                    return "0"
+                elif d == True:
+                    return "1"
+                elif type(g) == str:
                     return "0"+g
-                elif type(d) == str: # si element déjà trouvé à droite
+                elif type(d) == str:
                     return "1"+d
             elif self["r"].value == elem: # if ce Sommet est la feuille recherchée
                 return True
             else:
                 return False
+
 
 ##############################################################################################
