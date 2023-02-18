@@ -3,8 +3,8 @@ from classes import ArbreB, Sommet
 
 def proportions(path:str):
     """Prend le chemin d'un fichier quelconque et retourne les
-    proportions de Charactères trouvés à l'intérieur de ce fichier.\n
-    str => list(n*tuple(chr,occurences))"""
+    occurences par Charactères (= chr) de son content.\n
+    str => (list(n*tuple(chr,occurences)), list[chr])"""
     
     with open(path,"r") as f:
         texte = "".join(f.readlines()).lower()
@@ -17,7 +17,7 @@ def proportions(path:str):
         else:
             proportion[i] = 1
 
-    return sorted(proportion.items(), key= lambda item: item[1])
+    return (sorted(proportion.items(), key= lambda item: item[1]), list(proportion.keys()))
 
 
 def _staged_merger(liste_abr:list[ArbreB]):

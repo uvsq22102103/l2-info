@@ -15,6 +15,8 @@ class ArbreB():
         self.content = {"r" : sommet, "fg" : None, "fd" : None}
 
     def fusion(self,abr):
+        """Fusionne deux arbres en un puis crée une racine contenant un sommet
+        ayant la somme des etiquettes des deux fils pour attribut"""
         fg = self.content.copy()
         fd = abr.content.copy()
         self.content = {"r" : Sommet(fg["r"].etiquette + fd["r"].etiquette),
@@ -37,7 +39,7 @@ class ArbreB():
                 ArbreB.show(self["fg"],_n)
     
     def search(self,elem:str):
-        """Recherche un element ds un arbre en renvoi son chemin"""
+        """Recherche un element ds un l'arbre et renvoi son équivalent binaire"""
         if type(self) == ArbreB: # 
             return ArbreB.search(self.content,elem)
         elif type(self) == dict:
