@@ -9,7 +9,7 @@ class Domino(object):
     def valeur(self):
         return self.faceA + self.faceB
 
-liste_dominos = [ ]
+liste_dominos = []
 for indice in range(7) :
     liste_dominos.append(Domino(6, indice))
 

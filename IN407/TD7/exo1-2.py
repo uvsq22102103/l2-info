@@ -1,12 +1,8 @@
-########################
-######## IMPORT ########
-
-from math import sqrt
-
 #######################
 ######## CLASS ########
 
 class Point():
+    """Exercice 1"""
     def __init__(self, abscisse:int=0, ordonne:int=0):
         self.__abscisse = abscisse
         self.__ordonne = ordonne
@@ -14,15 +10,16 @@ class Point():
     def get_coords(self):
         return (self.__abscisse, self.__ordonne)
     
-    def cloner(self, pt):
-        self.__abscisse, self.__ordonne = pt.get_coords()
-        print("Clonage effectué")
+    def cloner(pt):
+        x, y = pt.get_coords()
+        return Point(x,y)
     
     def afficher(self):
         print(self.__abscisse, self.__ordonne)
 
 
 class Segment():
+    """Exercice 2"""
     def __init__(self, ptA:Point, ptB:Point):
         self.ptA = ptA
         self.ptB = ptB
@@ -40,7 +37,7 @@ class Segment():
         """sqrt((xB-xA)**2 + (yB-yA)**2)"""
         xA, yA = self.ptA.get_coords()
         xB, yB = self.ptB.get_coords()
-        return sqrt((xB-xA)**2 + (yB-yA)**2)
+        return ((xB-xA)**2 + (yB-yA)**2)**(1/2)
 
 ########################
 ######### MAIN #########
@@ -51,3 +48,6 @@ pt1.afficher()
 pt2.afficher()
 seg1 = Segment(pt1, pt2)
 print(seg1.longeur())
+
+pt3 = Point.cloner(pt1)
+pt3.afficher()
