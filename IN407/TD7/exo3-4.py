@@ -16,10 +16,12 @@ class CString():
         return self.txt
     
     def plusGrandeQue(self, pt):
-        return len(self.get_chaine()) > len(pt.get_chaine())
+        """Au sens alphabetique"""
+        return self.get_chaine() > pt.get_chaine()
     
     def infOuEgale(self, pt):
-        return len(self.get_chaine()) <= len(pt.get_chaine())
+        """Au sens alphabetique"""
+        return self.get_chaine() <= pt.get_chaine()
     
     def plusGrand(self, pt):
         if self.plusGrandeQue(pt):
@@ -52,10 +54,10 @@ class Definition():
 #print("s3=", s3)
 #
 #if s1.plusGrandeQue(s2):
-#    print("s1 est plus grand que s2".format(s1.get_chaine(), s2.get_chaine()))
+#    print("s1 :{} est plus grand que s2 :{}".format(s1.get_chaine(), s2.get_chaine()))
 #
 #if s1.infOuEgale(s2):
-#    print(f"{0} est plus petit {1}".format(s1.get_chaine(), s2.get_chaine()))
+#    print("{} est plus petit {}".format(s1.get_chaine(), s2.get_chaine()))
 #
 #s3 = s1.plusGrand(s2)
 ################################## EXERCICE 4 #####################################
