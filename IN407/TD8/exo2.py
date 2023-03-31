@@ -9,8 +9,15 @@ class Vecteur():
     def get_values(self):
         return self.values.copy()
     
-    def __add__(self, value:int):
-        return Vecteur(self.get_values() + [value])
+    def __add__(self, value):
+        if type(value) is int:
+            return Vecteur(self.get_values() + [value])
+        elif type(value) is Vecteur:
+            return Vecteur(self.get_values() + value.get_values())
+        elif type(value) is list:
+            return Vecteur(self.get_values() + value)
+        else:
+            raise ValueError(f"{type(value)} non géré")
     
     def __str__(self) -> str:
         return str(self.values)
@@ -28,3 +35,10 @@ class Vecteur():
         return self - value
 
 a = Vecteur([3,6,1])
+b = a + 3
+c = a + [4,8,3]
+d = a + Vecteur([7,0])
+print(a)
+print(b)
+print(c)
+print(d)

@@ -105,14 +105,19 @@ class Dictionnaire():
     def __iadd__(self, definition:Definition):
         return self + definition
     
-    def __sub__(self, word:str):
+    def __sub__(self, mot:str|Definition):
         dico = self.dictionnaire.copy()
-        if word in dico.keys():
-            dico.pop(word)
-        return Dictionnaire(Dictionnaire.get_all_Def(dico))
+        if type(mot) == str:
+            if mot in dico.keys():
+                dico.pop(mot)
+            return Dictionnaire(Dictionnaire.get_all_Def(dico))
+        elif type(mot) == Definition:
+            if (cle:=mot.getClef()) in dico.keys():
+                dico.pop(cle)
+            return Dictionnaire(Dictionnaire.get_all_Def(dico))
     
-    def __isub__(self, word:str):
-        return self - word
+    def __isub__(self, mot:str|Definition):
+        return self - mot
     
     def __str__(self):
         output = ""
