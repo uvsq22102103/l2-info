@@ -1,0 +1,24 @@
+# On est le 11/04 à la BU de Versailles, il est 11:29 #
+
+Objectif de la session : faire le TD8
+Document requis : CM d'IN405 (OS)
+
+Tips : 
+
+thread = threading.Thread(target=<fonction>, args=iterable)
+thread.start()
+thread.join()
+
+lock = threading.Lock()
+lock.acquire()
+lock.release()
+lock.locked()
+
+cd = threading.Condition()
+cd.wait()
+cd.notify()
+cd.notify_all()
+
+barriere = threading.Barrier(nb_threads)
+barriere.wait()
+barriere.reset()
